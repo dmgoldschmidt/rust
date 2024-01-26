@@ -1,10 +1,16 @@
 use std::env;
+use std::process::exit;
 
 fn main(){
     let options : &mut Vec<String> = &mut Vec::new();
     let values : &mut Vec<String> = &mut Vec::new();
     get_opt(options,values);
-    println!("options: {:?} values: {:?}",options,values);
+    assert!(options.len() == values.len());
+    println!("options.len() = {}",options.len()); 
+    for i in  1..options.len(){
+        println!("option[{i}] = {:?}, value[{i}] = {:?} ",options[i], values[i]);
+    }
+//    println!("options: {:?} values: {:?}",options,values);
 }
 fn get_opt(options : &mut Vec<String>, values : &mut Vec<String>) {
     let args: Vec<String> = env::args().collect();
